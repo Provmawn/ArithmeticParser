@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArithmeticParser.Client", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArithmeticParser.Shared", "ArithmeticParser\Shared\ArithmeticParser.Shared.csproj", "{921E7E29-D2E6-4B14-A28F-73BECA0D92DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticParser.Tests", "ArithmeticParser.Tests\ArithmeticParser.Tests.csproj", "{94CBF50D-8FCD-41C9-BB3F-D9F62424273F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArithmeticParser.Tests", "ArithmeticParser.Tests\ArithmeticParser.Tests.csproj", "{94CBF50D-8FCD-41C9-BB3F-D9F62424273F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

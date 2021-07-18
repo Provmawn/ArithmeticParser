@@ -20,39 +20,40 @@
     }
     <div class="container col-6 text-center">
         <h3 class="col-6">Sum</h3>
-        <label class="col-12">@sum</label>
+        <label class="col-12">@parserOutput</label>
     </div>
 </div>
 
 @code {
     private string text;
-    private string lexerOutput;
+    private string parserOutput;
     private bool outputLexer = false;
-    private int sum = 0;
     List<Token> tokens = new List<Token>();
     Lexer lexer = new Lexer();
     Parser parser = new Parser();
 
-    protected override bool ShouldRender()
+    void GrabAndParseTokens()
     {
-        return true;
-    }
-
-        void GrabAndParseTokens()
-    {
-        GrabTokens();
-        ParseTokens();
+        try
+        {
+            GrabTokens();
+            ParseTokens();
+        }
+        catch (Exception exception)
+        {
+            parserOutput = exception.Message;
+            Console.WriteLine(parserOutput);
+        }
     }
 
     void GrabTokens()
     {
         Console.WriteLine(text);
         tokens = lexer.GrabTokens(text);
-        lexerOutput = lexer.ToString();
     }
 
     void ParseTokens()
     {
-        sum = parser.ParseTokens(tokens);
+        parserOutput = parser.ParseTokens(tokens).ToString();
     }
 }
