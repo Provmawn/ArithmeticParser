@@ -1,0 +1,58 @@
+﻿<div class="row text-center">
+    <div class="container">
+        <input class="col-6" type="text" @bind-value="text" @bind-value:event="oninput" />
+        <label class="col-6">@text</label>
+    </div>
+
+    <br />
+
+    <button class="col-12 btn btn-outline-secondary" @onclick="GrabAndParseTokens">Enter</button>
+
+    @if (tokens.Count > 0)
+    {
+        <div class="container col-6 text-center">
+            <h3 class="col-6">Lexer Output</h3>
+            @foreach (var token in tokens)
+            {
+                <label class="col-12">@token.Type @token.Value</label>
+            }
+        </div>
+    }
+    <div class="container col-6 text-center">
+        <h3 class="col-6">Sum</h3>
+        <label class="col-12">@sum</label>
+    </div>
+</div>
+
+@code {
+    private string text;
+    private string lexerOutput;
+    private bool outputLexer = false;
+    private int sum = 0;
+    List<Token> tokens = new List<Token>();
+    Lexer lexer = new Lexer();
+    Parser parser = new Parser();
+
+    protected override bool ShouldRender()
+    {
+        return true;
+    }
+
+        void GrabAndParseTokens()
+    {
+        GrabTokens();
+        ParseTokens();
+    }
+
+    void GrabTokens()
+    {
+        Console.WriteLine(text);
+        tokens = lexer.GrabTokens(text);
+        lexerOutput = lexer.ToString();
+    }
+
+    void ParseTokens()
+    {
+        sum = parser.ParseTokens(tokens);
+    }
+}
