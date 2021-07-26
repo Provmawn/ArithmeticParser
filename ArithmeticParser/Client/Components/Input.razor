@@ -1,29 +1,35 @@
 ﻿@inject ILexer _lexer
 @inject IParser _parser
 
-<div class="row text-center">
-    <div class="container">
-        <input class="col-6" type="text" @bind-value="text" @bind-value:event="oninput" />
-        <label class="col-6">@text</label>
+<div class="row">
+    <div class="form-group">
+        <label class="col-md-6">@text</label>
+        <input class="col-md-6" type="text" @bind-value="text" @bind-value:event="oninput" />
     </div>
-
     <br />
+</div>
+<div class="row">
+    <button class="col-md-2 btn btn-primary btn-lg" @onclick="GrabAndParseTokens">Enter</button>
+</div>
+<br />
 
-    <button class="col-12 btn btn-outline-secondary" @onclick="GrabAndParseTokens">Enter</button>
+<br />
 
+<div class="row">
     @if (tokens.Count > 0)
     {
-        <div class="container col-6 text-center">
-            <h3 class="col-6">Lexer Output</h3>
+        <div class="col-md-4">
+            <h3>Lexer Output</h3>
             @foreach (var token in tokens)
             {
-                <label class="col-12">@token.Type @token.Value</label>
+                <label>@token.Type @token.Value</label>
+                <br />
             }
         </div>
     }
-    <div class="container col-6 text-center">
-        <h3 class="col-6">Sum</h3>
-        <label class="col-12">@parserOutput</label>
+    <div class="col-md-4">
+        <h3>Sum</h3>
+        <label>@parserOutput</label>
     </div>
 </div>
 
