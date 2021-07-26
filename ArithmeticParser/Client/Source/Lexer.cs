@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using System;
+using ArithmeticParser.Client.Interfaces;
 
 namespace ArithmeticParser.Client.Source
 {
@@ -20,7 +21,7 @@ namespace ArithmeticParser.Client.Source
             Value = value;
         }
     }
-    public class Lexer
+    public class Lexer : ILexer
     {
         private List<Token> _tokenList;
         private StringBuilder _text;

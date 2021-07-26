@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ArithmeticParser.Client.Interfaces;
 
 namespace ArithmeticParser.Client.Source
 {
-    public class Parser
+    public class Parser : IParser
     {
         private int _position;
         private List<Token> _tokenList = new List<Token>();

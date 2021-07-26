@@ -1,4 +1,7 @@
-﻿<div class="row text-center">
+﻿@inject ILexer _lexer
+@inject IParser _parser
+
+<div class="row text-center">
     <div class="container">
         <input class="col-6" type="text" @bind-value="text" @bind-value:event="oninput" />
         <label class="col-6">@text</label>
@@ -29,8 +32,8 @@
     private string parserOutput;
     private bool outputLexer = false;
     List<Token> tokens = new List<Token>();
-    Lexer lexer = new Lexer();
-    Parser parser = new Parser();
+    //Lexer lexer = new Lexer();
+    //Parser parser = new Parser();
 
     void GrabAndParseTokens()
     {
@@ -49,11 +52,11 @@
     void GrabTokens()
     {
         Console.WriteLine(text);
-        tokens = lexer.GrabTokens(text);
+        tokens = _lexer.GrabTokens(text);
     }
 
     void ParseTokens()
     {
-        parserOutput = parser.ParseTokens(tokens).ToString();
+        parserOutput = _parser.ParseTokens(tokens).ToString();
     }
 }
